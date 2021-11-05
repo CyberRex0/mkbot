@@ -4,6 +4,10 @@ A simple bot framework.
 
 # Features Support
 These unimplemented features will be available later.
+## Streaming API
+- [x] Connect
+- [x] Subscribe channel
+- [ ] API request via WebSocket 
 ## Note Event
 - [x] Create
 - [ ] Delete
