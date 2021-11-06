@@ -18,7 +18,7 @@ These unimplemented features will be available later.
 - [ ] Update profile
 ## Note API
 - [x] Create
-- [ ] Delete
+- [x] Delete
 - [x] Reply
 - [x] Renote
 - [ ] Add/Remove reaction

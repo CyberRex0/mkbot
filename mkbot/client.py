@@ -1,7 +1,7 @@
 from types import FunctionType
 import aiohttp, asyncio
 from .websocket import WebSocket
-from .object import Note
+from .object import Note, ClientUser
 from misskey import Misskey
 
 class Client:
@@ -15,7 +15,8 @@ class Client:
         self._listener_counter:int = 0
         self.loop = asyncio.get_event_loop()
         self.api:Misskey = Misskey(address=self.host, i=self.token)
-    
+        self.user:ClientUser = None
+
     async def change_timeline(self, t:str):
         await self.ws.send_json({
             'type': 'disconnect',
@@ -47,6 +48,7 @@ class Client:
                     'id': self.timeline
                 }
             })
+            self.user = ClientUser(self, self.api.i())
             self.dispatch('ready')
             async for msg in ws:
                 if msg.type == aiohttp.WSMsgType.TEXT:
